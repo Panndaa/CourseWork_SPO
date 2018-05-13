@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">CourseWork</string>
+    <string name="welcome">Добро пожаловать</string>
+    <string name="main_text">\t\tЭто фитнес приложение lose your fat. В нем вы можете выбрать две категории: бег или упражнение.\n
+         \t\tВ категории Бег Вы можетет увидеть: расстояние, которое вы преодалели, среднюю скорость и длительность вашего бега.\n
+         \t\tВ категории Упражнения Вы можете: выбрать нужное упражниние, выбрать количество подходов, отдых между ними и время выполнения."</string>
+    <string name="ran">Бег</string>
+    <string name="exercise">Упражнения</string>
+    <string name="pres">Пресс</string>
+    <string name="otj_back">Обратные отжимания</string>
+    <string name="otj_koleni">Отжимания</string>
+    <string name="planka">Планка</string>
+    <string name="podtiag">Подтягивание</string>
+    <string name="ruki">Разведение рук</string>
+    <string name="skakalka">Прыжки со скакалкой</string>
+    <string name="spina">Спина</string>
+    <string name="voshod">Восхождение</string>
+    <string name="vupad">Выпады</string>
+</resources>
