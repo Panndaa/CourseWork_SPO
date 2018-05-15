@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
-    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         android:gravity="center"
         android:background="#deebed">
@@ -21,166 +18,38 @@
                 android:layout_width="67dp"
                 android:layout_height="30dp"
                 android:layout_marginStart="3dp"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="5dp"
                 android:background="#deebed"
                 android:drawableBottom="@drawable/back_arrow" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="27dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="10dp"
                 android:text="@string/exercise"
                 android:textStyle="italic"
                 android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
-
-            <Button
-                android:id="@+id/exerciseFavorites"
-                android:layout_width="50dp"
-                android:layout_height="30dp"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="15dp"
-                android:background="#deebed"
-                android:drawableBottom="@drawable/favorites_star" />
-
         </LinearLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:text="@string/otj_back"
-            android:textAppearance="@android:style/TextAppearance.Material.WindowTitle" />
+        <ListView
+            android:id="@+id/listView"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:layout_gravity="center"
+            android:scrollbars="vertical">
+        </ListView>
 
-        <ImageButton
-            android:id="@+id/otjimaniaBack"
+        <Button
+            android:id="@+id/setTimer"
+            style="@style/Widget.AppCompat.Button.Colored"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="#deebed"
-            android:src="@drawable/otjimaniaback"/>
+            android:layout_gravity="center"
+            android:text="@string/start" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:text="@string/otj_koleni"
-            android:textAppearance="@android:style/TextAppearance.Material.WindowTitle" />
+</LinearLayout>
 
-        <ImageButton
-            android:id="@+id/otjimaniaKoleni"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="#deebed"
-            android:src="@drawable/otjimaniakoleni"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:text="@string/planka"
-            android:textAppearance="@android:style/TextAppearance.Material.WindowTitle" />
-
-        <ImageButton
-            android:id="@+id/planka"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="#deebed"
-            android:src="@drawable/planka"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:text="@string/podtiag"
-            android:textAppearance="@android:style/TextAppearance.Material.WindowTitle" />
-        <ImageButton
-            android:id="@+id/podtiagivanie"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="#deebed"
-            android:layout_marginTop="10dp"
-            android:src="@drawable/podtiagivanie"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:text="@string/pres"
-            android:textAppearance="@android:style/TextAppearance.Material.WindowTitle" />
-        <ImageButton
-            android:id="@+id/pres"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="#deebed"
-            android:src="@drawable/pres"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:text="@string/ruki"
-            android:textAppearance="@android:style/TextAppearance.Material.WindowTitle" />
-        <ImageButton
-            android:id="@+id/ruki"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="#deebed"
-            android:src="@drawable/ruki"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:text="@string/skakalka"
-            android:textAppearance="@android:style/TextAppearance.Material.WindowTitle" />
-        <ImageButton
-            android:id="@+id/skakalka"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="#deebed"
-            android:src="@drawable/skakalka"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:text="@string/spina"
-            android:textAppearance="@android:style/TextAppearance.Material.WindowTitle"/>
-        <ImageButton
-            android:id="@+id/spina"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="#deebed"
-            android:src="@drawable/spina"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:text="@string/voshod"
-            android:textAppearance="@android:style/TextAppearance.Material.WindowTitle" />
-        <ImageButton
-            android:id="@+id/voshojdenia"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="#deebed"
-            android:src="@drawable/voshojdenia"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:text="@string/vupad"
-            android:textAppearance="@android:style/TextAppearance.Material.WindowTitle" />
-        <ImageButton
-            android:id="@+id/Vupad"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="#deebed"
-            android:src="@drawable/vupadu"/>
-
-    </LinearLayout>
-
-</ScrollView>
 
 

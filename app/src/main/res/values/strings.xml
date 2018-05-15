@@ -16,4 +16,21 @@
     <string name="spina">Спина</string>
     <string name="voshod">Восхождение</string>
     <string name="vupad">Выпады</string>
+    <string name="start">Установить таймер</string>
+    <string name="str">Старт</string>
+    <string name="performance">Установите время выполнения</string>
+    <string name="rest">Установите время отдыха</string>
+    <string name="approaches">Установите количество повторов</string>
+    <string-array name="listexercise">
+        <item>Обратные отжимания</item>
+        <item>Отжимания</item>
+        <item>Планка</item>
+        <item>Подтягивание</item>
+        <item>Разведение рук</item>
+        <item>Пресс</item>
+        <item>Прыжки со скакалкой</item>
+        <item>Спина</item>
+        <item>Восхождение</item>
+        <item>Выпады</item>
+    </string-array>
 </resources>
