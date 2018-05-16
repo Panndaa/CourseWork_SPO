@@ -151,47 +151,6 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:orientation="horizontal"
-        android:layout_marginTop="5dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_gravity="center"
-            android:text="@string/rest_between_circle"
-            android:textSize="20sp"
-            android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Subtitle"/>
-
-        <EditText
-            android:id="@+id/minutes_rest_exercise"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="52dp"
-            android:ems="5"
-            android:hint="@string/minutes"
-            android:layout_gravity="center"
-            android:textSize="15sp"
-            android:maxLength="2"
-            android:inputType="numberDecimal" />
-
-        <EditText
-            android:id="@+id/seconds_rest_exercise"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="5"
-            android:layout_marginStart="5dp"
-            android:layout_gravity="center"
-            android:hint="@string/seconds"
-            android:textSize="15sp"
-            android:maxLength="2"
-            android:inputType="numberDecimal" />
-
-    </LinearLayout>
-
     <Button
         android:layout_width="150dp"
         android:layout_height="60dp"

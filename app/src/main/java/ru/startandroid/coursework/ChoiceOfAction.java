@@ -14,16 +14,16 @@ public class ChoiceOfAction extends AppCompatActivity implements OnClickListener
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choice_of_action);
-        buttonRun=(Button) findViewById(R.id.buttonRun);
+        buttonRun= (Button) findViewById(R.id.buttonRun);
         buttonRun.setOnClickListener(this);
-        buttonExercise =(Button) findViewById(R.id.buttonExercise);
+        buttonExercise = (Button) findViewById(R.id.buttonExercise);
         buttonExercise.setOnClickListener(this);
     }
     @Override
     public void onClick(View view){
         switch(view.getId()){
             case R.id.buttonRun:
-                Intent intentRun = new Intent(this, ChoiceOfAction.class);
+                Intent intentRun = new Intent(this, SetTimer.class);
                 startActivity(intentRun);
                 break;
             case R.id.buttonExercise:

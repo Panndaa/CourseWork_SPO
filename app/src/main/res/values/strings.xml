@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">CourseWork</string>
     <string name="welcome">Добро пожаловать</string>
-    <string name="main_text">\t\tЭто фитнес приложение lose your fat. В нем вы можете выбрать две категории: бег или упражнение.\n
+    <string name="main_text">\t\tЭто фитнес приложение lose your fat. В нем вы можете выбрать две категории: бег или упражнения.\n
          \t\tВ категории Бег Вы можетет увидеть: расстояние, которое вы преодалели, среднюю скорость и длительность вашего бега.\n
          \t\tВ категории Упражнения Вы можете: выбрать нужное упражниние, выбрать количество подходов, отдых между ними и время выполнения."</string>
     <string name="ran">Бег</string>
@@ -17,10 +17,17 @@
     <string name="voshod">Восхождение</string>
     <string name="vupad">Выпады</string>
     <string name="start">Установить таймер</string>
-    <string name="str">Старт</string>
-    <string name="performance">Установите время выполнения</string>
-    <string name="rest">Установите время отдыха</string>
-    <string name="approaches">Установите количество повторов</string>
+    <string name="str">Начать тренировку</string>
+    <string name="performance">Время выполнения</string>
+    <string name="rest">Время отдыха\nмежду подходами</string>
+    <string name="approaches">Количество подходов</string>
+    <string name="value_exercise">Количество выбранных упражнений</string>
+    <string name="rest_between_circle">Отдых между\nупражнениями</string>
+    <string name="set_timer">Настройка таймера</string>
+    <string name="value">0</string>
+    <string name="minutes">минуты</string>
+    <string name="seconds">секунды</string>
+    <string name="value_repeat">от 1 до 9</string>
     <string-array name="listexercise">
         <item>Обратные отжимания</item>
         <item>Отжимания</item>

@@ -3,25 +3,26 @@
 
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center_horizontal"
     android:orientation="vertical">
 
     <Button
         android:id="@+id/buttonRun"
         android:layout_width="match_parent"
-        android:layout_height="285dp"
+        android:layout_height="328dp"
         android:background="#bce5e0"
         android:gravity="center"
         android:text="@string/ran"
+        android:textColor="#000000"
         android:textAppearance="@style/TextAppearance.AppCompat.Display3"
         android:textStyle="italic" />
 
     <Button
         android:id="@+id/buttonExercise"
         android:layout_width="match_parent"
-        android:layout_height="285dp"
+        android:layout_height="328dp"
         android:background="#e5debc"
         android:gravity="center"
+        android:textColor="#000000"
         android:text="@string/exercise"
         android:textStyle="italic"
         android:textAppearance="@style/TextAppearance.AppCompat.Display3" />
