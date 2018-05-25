@@ -1,14 +1,13 @@
 package ru.startandroid.coursework;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.View;
-import android.*;
-import android.widget.Button;
 import android.content.Intent;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Button;
 
-public class MainActivity extends AppCompatActivity implements OnClickListener{
+public class MainActivity extends AppCompatActivity implements OnClickListener {
 
     Button buttonNext;
 
@@ -17,19 +16,16 @@ public class MainActivity extends AppCompatActivity implements OnClickListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fitness);
 
-        buttonNext=(Button) findViewById(R.id.buttonNext);
+        buttonNext = (Button) findViewById(R.id.buttonNext);
         buttonNext.setOnClickListener(this);
     }
 
     @Override
-    public void onClick(View view){
-        switch(view.getId()){
-            case R.id.buttonNext:
+    public void onClick(View view) {
+            if( view.getId()==R.id.buttonNext) {
                 Intent intent = new Intent(this, ChoiceOfAction.class);
                 startActivity(intent);
-                break;
-            default:
-                break;
+            }
         }
     }
-}
+

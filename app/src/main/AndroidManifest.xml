@@ -20,6 +20,8 @@
         <activity android:name=".Exercise" />
         <activity android:name=".OtjimaniaBack" />
         <activity android:name=".SetTimer" />
+        <activity android:name=".Training" />
+        <activity android:name=".RestBetweenExercise"></activity>
     </application>
 
 </manifest>
