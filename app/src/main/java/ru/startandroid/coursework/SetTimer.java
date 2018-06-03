@@ -10,17 +10,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-import java.util.ArrayList;
+
 
 public class SetTimer extends AppCompatActivity implements OnClickListener {
 
-    protected EditText minutes_performance, seconds_performance, value_circle, minutes_rest, seconds_rest,
-            minutes_rest_exercise, seconds_rest_exercise;
-    Button start_training, start_training1;
-    TextView value, s;
     public int[] image;
     public int valueExerciseInt;
-    public ArrayList list_choice_exercise;
+    public int[] list_choice_exercise;
+    private EditText minutes_performance, seconds_performance, value_circle, minutes_rest, seconds_rest,
+            minutes_rest_exercise, seconds_rest_exercise;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,23 +27,11 @@ public class SetTimer extends AppCompatActivity implements OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_set_timer);
 
-        Bundle list = getIntent().getExtras();
-        ArrayList list_choice_exercise = list.getIntegerArrayList("listId");
 
         Bundle extras = getIntent().getExtras();
         valueExerciseInt = extras.getInt("value");
+        list_choice_exercise = extras.getIntArray("listId");
 
-        int[] image = new int[]{R.drawable.otjimaniaback,
-                R.drawable.otjimaniakoleni,
-                R.drawable.planka,
-                R.drawable.podtiagivanie,
-                R.drawable.ruki,
-                R.drawable.pres,
-                R.drawable.skakalka,
-                R.drawable.spina,
-                R.drawable.voshojdenia,
-                R.drawable.vupadu
-        };
 
         minutes_performance = (EditText) findViewById(R.id.minutes_performance);
         seconds_performance = (EditText) findViewById(R.id.seconds_performance);
@@ -57,16 +44,16 @@ public class SetTimer extends AppCompatActivity implements OnClickListener {
 
         value_circle = (EditText) findViewById(R.id.value_circle);
 
-        start_training = (Button) findViewById(R.id.start_training);
+        Button start_training = (Button) findViewById(R.id.start_training);
         start_training.setOnClickListener(this);
-        s = (TextView) findViewById(R.id.rest);
+        TextView rest_text = (TextView) findViewById(R.id.rest);
 
         String valueExercise = String.valueOf(valueExerciseInt);
-        value = (TextView) findViewById(R.id.value);
+        TextView value = (TextView) findViewById(R.id.value);
         value.setText(valueExercise);
 
         if (valueExerciseInt < 2) {
-            s.setText(null);
+            rest_text.setText(null);
             minutes_rest_exercise.setEnabled(false);
             minutes_rest_exercise.setHint(null);
             minutes_rest_exercise.setEms(0);
@@ -78,7 +65,7 @@ public class SetTimer extends AppCompatActivity implements OnClickListener {
 
     private int checkCircle(EditText name) throws Exception {
         int valuec = Integer.parseInt(name.getText().toString());
-        if (valuec > 9 || valuec < 0) {
+        if (valuec > 9 || valuec < 1) {
             name.setText(null);
             name.setHintTextColor(Color.RED);
             throw new Exception();
@@ -120,7 +107,8 @@ public class SetTimer extends AppCompatActivity implements OnClickListener {
         int value_circle_int = checkCircle(value_circle);
 
         Intent intentStartTraining = new Intent(this, Training.class);
-        intentStartTraining.putExtra("valueExercise",  valueExerciseInt);
+        intentStartTraining.putExtra("Array", list_choice_exercise);
+        intentStartTraining.putExtra("valueExercise", valueExerciseInt);
         intentStartTraining.putExtra("minutes_performance_int", minutes_performance_int);
         intentStartTraining.putExtra("second_performance_int", second_performance_int);
         intentStartTraining.putExtra("minutes_rest_int", minutes_rest_int);

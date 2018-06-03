@@ -9,14 +9,12 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity implements OnClickListener {
 
-    Button buttonNext;
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fitness);
 
-        buttonNext = (Button) findViewById(R.id.buttonNext);
+        Button buttonNext = (Button) findViewById(R.id.buttonNext);
         buttonNext.setOnClickListener(this);
     }
 

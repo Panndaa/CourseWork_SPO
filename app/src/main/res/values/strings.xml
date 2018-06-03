@@ -30,7 +30,13 @@
     <string name="value_repeat">от 1 до 9</string>
     <string name="stop">Стоп</string>
     <string name="finish">Завершить</string>
+    <string name="end">Поздравляю Вы завершили тренировку</string>
     <string name="start_training">Cтарт</string>
+    <string name="distance">Дистанция(км)</string>
+    <string name="time_run">Время</string>
+    <string name="running_speed">Темп(мин/км)</string>
+    <string name="template_speed_time">00:00</string>
+    <string name="template_distance">0,00</string>
     <string-array name="listexercise">
         <item>Обратные отжимания</item>
         <item>Отжимания</item>

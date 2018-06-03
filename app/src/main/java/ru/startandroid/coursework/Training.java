@@ -1,28 +1,36 @@
 package ru.startandroid.coursework;
 
-import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.os.CountDownTimer;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 
-public class Training extends AppCompatActivity {
+public class Training extends AppCompatActivity implements View.OnClickListener {
 
-    Button start;
-    TextView timer;
+    private Button start, stop, finish;
+    public TextView timer, current_exercise;
     public int seconds_performance, value_exercise, value_circle_int, seconds_rest,
-            seconds_rest_exercise, current_value_circle, current_value_exercise;
+            seconds_rest_exercise, current_value_exercise;
     public View view;
+    private boolean on_timer, conversion, f;
+    public int time, k;
+    private MediaPlayer sound;
+    public int[] image, fr;
+    public String[] name_exercise;
+    public int[] list_choice_exercise;
+    public ImageView exercise;
+    public String name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_training);
-
         Bundle extras = getIntent().getExtras();
         int minutes_performance_int = extras.getInt("minutes_performance_int");
         int second_performance_int = extras.getInt("second_performance_int");
@@ -32,51 +40,112 @@ public class Training extends AppCompatActivity {
         int seconds_rest_exercise_int = extras.getInt("seconds_rest_exercise_int");
         value_circle_int = extras.getInt("value_circle_int");
         value_exercise = extras.getInt("valueExercise");
+        list_choice_exercise = extras.getIntArray("Array");
 
-        timer = (TextView) findViewById(R.id.timer);
-        start = (Button) findViewById(R.id.start);
+        exercise = (ImageView) findViewById(R.id.view_exercise);
+        current_exercise = (TextView) findViewById(R.id.current_exercise);
+        name_exercise = getResources().getStringArray(R.array.listexercise);
 
+        image = new int[]{R.drawable.otjimaniaback,
+                R.drawable.otjimaniakoleni,
+                R.drawable.planka,
+                R.drawable.podtiagivanie,
+                R.drawable.ruki,
+                R.drawable.pres,
+                R.drawable.skakalka,
+                R.drawable.spina,
+                R.drawable.voshojdenia,
+                R.drawable.vupadu
+        };
+
+        sound = MediaPlayer.create(this, R.raw.pip);
+
+        start = (Button) findViewById(R.id.start_training_exercise);
+        start.setOnClickListener(this);
+        stop = (Button) findViewById(R.id.stop);
+        stop.setOnClickListener(this);
+        finish = (Button) findViewById(R.id.finish);
+        finish.setOnClickListener(this);
         seconds_performance = minutes_performance_int * 60 + second_performance_int;
         seconds_rest = minutes_rest_int * 60 + seconds_rest_int;
         seconds_rest_exercise = minutes_rest_exercise_int * 60 + seconds_rest_exercise_int;
-
-        current_value_circle = value_circle_int;
-
-        show_timer();
-
     }
 
-    public void show_timer() {
-        CountDownTimer countDownTimer1 = new CountDownTimer(seconds_performance * 1000, 1000) {
 
-            @Override
-            public void onTick(long l) {
-                timer.setText(" " + l / 60000 + ":" + (l % 60000) / 1000);
-            }
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.start_training_exercise:
+                cycleTimer(true);
+                break;
+            case R.id.stop:
+                cycleTimer(false);
+                break;
+            case R.id.finish:
+                on_timer = false;
+                cycleTimer(false);
+                timer.setText("00:00");
+                break;
+            default:
+                break;
+        }
+    }
 
-            @Override
-            public void onFinish() {
-                while (current_value_circle != 0) {
-                    current_value_exercise = value_exercise;
-                    while (current_value_exercise != 0) {
-                        current_value_exercise--;
-                        go_to_rest(view);
+    public void cycleTimer(final boolean control) {
+        int i = 0;
+        //  while (value_circle_int != 0) {
+
+//        current_value_exercise = value_exercise;
+//        while (current_value_exercise != 0) {
+
+            k = list_choice_exercise[i];
+            name = name_exercise[k];
+
+       //     on_timer = control;
+
+            exercise.setImageResource(image[k]);
+            current_exercise.setText(name);
+
+            runTimer(seconds_performance);
+            i++;
+          //  current_value_exercise--;
+      //  }
+    }
+
+
+    public void runTimer(final int counter) {
+        timer = (TextView) findViewById(R.id.timer);
+        final Handler handler = new Handler();
+
+        time = counter;
+
+        // if (conversion) {
+        handler.post(new Runnable() {
+
+            public void run() {
+                on_timer=true;
+                do {
+                    int minutes = (time % 3600) / 60;
+                    int second = time % 60;
+                    String value_time = String.format("%02d:%02d", minutes, second);
+                    timer.setText(value_time);
+
+                    if (time<3){
+                        sound.start();
                     }
-                    current_value_circle--;
-                }
+                    if (time < 0) {
+                        on_timer = false;
+                    }
+                    time--;
+
+
+                    handler.postDelayed(this, 1000);
+                } while (!on_timer);
+
             }
-
-        }.start();
-    }
-
-    public void go_to_rest(View view) {
-        Intent intentRestBetweenExercise = new Intent(this, RestBetweenExercise.class);
-        intentRestBetweenExercise.putExtra("remaining_quantity", current_value_circle);//оставшиеся круги
-        intentRestBetweenExercise.putExtra("value_circle", value_circle_int);//общие круги
-        intentRestBetweenExercise.putExtra("value_exercise", value_exercise);//кол-во упражнений всего
-        intentRestBetweenExercise.putExtra("current_value_exercise", current_value_exercise);//кол-во упражнений оставшееся
-        intentRestBetweenExercise.putExtra("seconds_rest", seconds_rest);//секунды отдыха между кругами
-        intentRestBetweenExercise.putExtra("seconds_rest_exercise", seconds_rest_exercise);//секунды отдыха между упражнениями
-        startActivity(intentRestBetweenExercise);
+        });
     }
 }
+
+
+
+
