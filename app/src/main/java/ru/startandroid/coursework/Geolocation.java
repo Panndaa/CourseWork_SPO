@@ -91,16 +91,16 @@ public class Geolocation extends FragmentActivity implements OnMapReadyCallback 
 
     public void onMapReady(GoogleMap map) {
 
-       loc= r(location);
+
         map.addMarker(new MarkerOptions()
-               // .position(new LatLng(0, 0))
-                .position(loc)
+               .position(new LatLng(0, 0))
+                //.position(loc)
                 .title("It's you ")
                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.run)));
     }
 
-    public LatLng r(Location location){
-    LatLng loc=new LatLng(location.getLatitude(),location.getLongitude());
-    return loc;
-}
+//    public LatLng r(Location location){
+//    LatLng loc=new LatLng(location.getLatitude(),location.getLongitude());
+//    return loc;
+//}
 }

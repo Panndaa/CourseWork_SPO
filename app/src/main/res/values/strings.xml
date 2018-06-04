@@ -28,7 +28,8 @@
     <string name="minutes">минуты</string>
     <string name="seconds">секунды</string>
     <string name="value_repeat">от 1 до 9</string>
-    <string name="stop">Стоп</string>
+    <string name="stop">Заново</string>
+    <string name="Choice">Выбор упражнения</string>
     <string name="finish">Завершить</string>
     <string name="end">Поздравляю Вы завершили тренировку</string>
     <string name="start_training">Cтарт</string>
