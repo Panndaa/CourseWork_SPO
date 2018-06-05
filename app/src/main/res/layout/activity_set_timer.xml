@@ -27,7 +27,7 @@
             android:layout_gravity="center"
             android:layout_marginStart="10dp"
             android:text="@string/value_exercise"
-            android:textSize="20sp"
+            android:textSize="15sp"
             android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Subtitle" />
 
         <TextView
@@ -35,7 +35,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:textSize="20sp"
+            android:textSize="15sp"
             android:layout_marginStart="10dp"
             android:text="@string/value"
             android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Subtitle" />
@@ -54,7 +54,7 @@
             android:layout_marginStart="10dp"
             android:layout_gravity="center"
             android:text="@string/performance"
-            android:textSize="20sp"
+            android:textSize="15sp"
             android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Subtitle" />
 
         <EditText
@@ -65,7 +65,7 @@
             android:ems="5"
             android:hint="@string/minutes"
             android:layout_gravity="center"
-            android:textSize="15sp"
+            android:textSize="12sp"
             android:maxLength="2"
             android:inputType="numberDecimal" />
 
@@ -77,7 +77,7 @@
             android:layout_marginStart="5dp"
             android:layout_gravity="center"
             android:hint="@string/seconds"
-            android:textSize="15sp"
+            android:textSize="12sp"
             android:maxLength="2"
             android:inputType="numberDecimal" />
     </LinearLayout>
@@ -93,7 +93,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_gravity="center"
-            android:textSize="20sp"
+            android:textSize="15sp"
             android:text="@string/approaches"
             android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Subtitle"/>
 
@@ -107,7 +107,7 @@
             android:maxLength="2"
             android:layout_marginStart="5dp"
             android:layout_gravity="center"
-            android:textSize="14sp"
+            android:textSize="12sp"
             android:selectAllOnFocus="true" />
     </LinearLayout>
 
@@ -122,7 +122,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:text="@string/rest"
-            android:textSize="20sp"
+            android:textSize="15sp"
             android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Subtitle"/>
 
         <EditText
@@ -133,7 +133,7 @@
             android:ems="5"
             android:hint="@string/minutes"
             android:layout_gravity="center"
-            android:textSize="15sp"
+            android:textSize="12sp"
             android:maxLength="2"
             android:inputType="numberDecimal" />
 
@@ -145,7 +145,7 @@
             android:layout_marginStart="5dp"
             android:layout_gravity="center"
             android:hint="@string/seconds"
-            android:textSize="15sp"
+            android:textSize="12sp"
             android:maxLength="2"
             android:inputType="numberDecimal" />
 
@@ -165,7 +165,7 @@
             android:layout_marginStart="10dp"
             android:layout_gravity="center"
             android:text="@string/rest_between_circle"
-            android:textSize="20sp"
+            android:textSize="15sp"
             android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Subtitle"/>
 
         <EditText
@@ -176,7 +176,7 @@
             android:ems="5"
             android:hint="@string/minutes"
             android:layout_gravity="center"
-            android:textSize="15sp"
+            android:textSize="12sp"
             android:maxLength="2"
             android:inputType="numberDecimal" />
 
@@ -188,7 +188,7 @@
             android:layout_marginStart="5dp"
             android:layout_gravity="center"
             android:hint="@string/seconds"
-            android:textSize="15sp"
+            android:textSize="12sp"
             android:maxLength="2"
             android:inputType="numberDecimal" />
 

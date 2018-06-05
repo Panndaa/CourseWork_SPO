@@ -1,7 +1,7 @@
 <resources>
-    <string name="app_name">CourseWork</string>
+    <string name="app_name">Fitness Helper</string>
     <string name="welcome">Добро пожаловать</string>
-    <string name="main_text">\t\tЭто фитнес приложение lose your fat. В нем вы можете выбрать две категории: бег или упражнения.\n
+    <string name="main_text">\t\tЭто фитнес приложение Fitness Helper. В нем вы можете выбрать две категории: бег или упражнения.\n
          \t\tВ категории Бег Вы можетет увидеть: расстояние, которое вы преодалели, среднюю скорость и длительность вашего бега.\n
          \t\tВ категории Упражнения Вы можете: выбрать нужное упражниние, выбрать количество подходов, отдых между ними и время выполнения."</string>
     <string name="ran">Бег</string>
