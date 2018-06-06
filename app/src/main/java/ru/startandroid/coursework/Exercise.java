@@ -14,13 +14,12 @@ import android.widget.Toast;
 
 public class Exercise extends AppCompatActivity implements OnClickListener {
 
-    public int[] positionName;
-    public String[] namesExercise;
+    private int[] positionName;
     private ListView list;
     private int count;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exercise);
 
@@ -42,10 +41,10 @@ public class Exercise extends AppCompatActivity implements OnClickListener {
         Button buttonSetTimer = (Button) findViewById(R.id.setTimer);
         buttonSetTimer.setOnClickListener(this);
 
-        namesExercise = getResources().getStringArray(R.array.listexercise);
+        String[]  namesExercise = getResources().getStringArray(R.array.listexercise);
     }
 
-    public void onClickList() {
+    private void onClickList() {
         SparseBooleanArray sbArray = list.getCheckedItemPositions();
         count = 0;
         int position_in_array_of_elements = 0;

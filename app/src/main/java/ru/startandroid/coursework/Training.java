@@ -15,20 +15,15 @@ import java.util.Locale;
 
 public class Training extends AppCompatActivity implements View.OnClickListener {
 
-    private Button start, stop, finish;
-    public TextView timer, current_exercise;
-    public int seconds_performance, value_exercise, value_circle_int, seconds_rest,
-            seconds_rest_exercise, current_value_exercise, ds;
-    public View view;
-
-    public int k, time, i;
+    private TextView timer, current_exercise;
     private MediaPlayer finish_sound, tuk;
-    public int[] image;
-    public String[] name_exercise;
-    public int[] list_choice_exercise;
-    public ImageView exercise;
-    public String name,text_timer;
-    public CountDownTimer countDownTimer;
+    private ImageView exercise;
+    private CountDownTimer countDownTimer;
+    private int seconds_performance, value_exercise, value_circle_int, seconds_rest,
+            seconds_rest_exercise, current_value_exercise, k, i;
+    private String name, text_timer;
+    private int[] image, list_choice_exercise;
+    private String[] name_exercise;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,11 +66,11 @@ public class Training extends AppCompatActivity implements View.OnClickListener 
 
         exercise.setImageResource(image[k]);
         current_exercise.setText(name);
-        start = (Button) findViewById(R.id.start_training_exercise);
+        Button start = (Button) findViewById(R.id.start_training_exercise);
         start.setOnClickListener(this);
-        stop = (Button) findViewById(R.id.stop);
+        Button stop = (Button) findViewById(R.id.stop);
         stop.setOnClickListener(this);
-        finish = (Button) findViewById(R.id.finish);
+        Button finish = (Button) findViewById(R.id.finish);
         finish.setOnClickListener(this);
         seconds_performance = minutes_performance_int * 60 + second_performance_int;
         seconds_rest = minutes_rest_int * 60 + seconds_rest_int;
@@ -93,16 +88,12 @@ public class Training extends AppCompatActivity implements View.OnClickListener 
                 cycleTimer(seconds_performance);
                 break;
             case R.id.stop:
-
                 cancel();
-
                 break;
             case R.id.finish:
-
                 cancel();
                 Intent intentExercise = new Intent(this, Exercise.class);
                 startActivity(intentExercise);
-
                 break;
             default:
                 break;
@@ -110,7 +101,7 @@ public class Training extends AppCompatActivity implements View.OnClickListener 
     }
 
 
-    public void cycleTimer(int sec) {
+    private void cycleTimer(int sec) {
         k = list_choice_exercise[i];
         name = name_exercise[k];
 
@@ -120,9 +111,9 @@ public class Training extends AppCompatActivity implements View.OnClickListener 
             @Override
             public void onTick(long l) {
                 tuk.start();
-                int minutes=(int)((l/1000)/60);
-                int seconds=+ (int) ((l / 1000)%60);
-                text_timer=String.format(Locale.getDefault(),"%02d:%02d",minutes,seconds);
+                int minutes = (int) ((l / 1000) / 60);
+                int seconds = +(int) ((l / 1000) % 60);
+                text_timer = String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds);
                 timer.setText(text_timer);
 
             }
@@ -133,13 +124,13 @@ public class Training extends AppCompatActivity implements View.OnClickListener 
                 if (value_circle_int != 0) {
 
                     if (current_value_exercise > 1) {
-                        cycleTimer1(seconds_rest_exercise);
+                        cycleTimerRest(seconds_rest_exercise);
                         current_value_exercise--;
                         i++;
                     } else if (value_circle_int > 1) {
                         current_value_exercise = value_exercise;
                         i = 0;
-                        cycleTimer1(seconds_rest);
+                        cycleTimerRest(seconds_rest);
                         value_circle_int--;
                     } else if (value_circle_int == 1) {
                         value_circle_int--;
@@ -154,16 +145,16 @@ public class Training extends AppCompatActivity implements View.OnClickListener 
         }.start();
     }
 
-    public void cycleTimer1(int sec) {
+    private void cycleTimerRest(int sec) {
         exercise.setImageResource(R.drawable.tried);
         current_exercise.setText("Отдых");
 
         countDownTimer = new CountDownTimer(sec * 1000, 1000) {
             @Override
             public void onTick(long l) {
-                int minutes=(int)((l/1000)/60);
-                int seconds=+ (int) ((l / 1000)%60);
-                text_timer=String.format(Locale.getDefault(),"%02d:%02d",minutes,seconds);
+                int minutes = (int) ((l / 1000) / 60);
+                int seconds = +(int) ((l / 1000) % 60);
+                text_timer = String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds);
                 timer.setText(text_timer);
             }
 
@@ -183,8 +174,6 @@ public class Training extends AppCompatActivity implements View.OnClickListener 
             timer.setText(R.string.template_speed_time);
         }
     }
-
-
 }
 
 

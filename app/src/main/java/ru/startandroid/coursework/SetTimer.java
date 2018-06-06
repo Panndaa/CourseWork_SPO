@@ -14,9 +14,9 @@ import android.widget.Toast;
 
 public class SetTimer extends AppCompatActivity implements OnClickListener {
 
-    public int[] image;
-    public int valueExerciseInt;
-    public int[] list_choice_exercise;
+
+    private int valueExerciseInt;
+    private int[] list_choice_exercise;
     private EditText minutes_performance, seconds_performance, value_circle, minutes_rest, seconds_rest,
             minutes_rest_exercise, seconds_rest_exercise;
 
@@ -72,7 +72,7 @@ public class SetTimer extends AppCompatActivity implements OnClickListener {
         } else return valuec;
     }
 
-    private int checkText(EditText name) throws Exception {
+    private int checkTime(EditText name) throws Exception {
         if (name.getText().toString().equals("")) {
             return 0;
         }
@@ -98,12 +98,12 @@ public class SetTimer extends AppCompatActivity implements OnClickListener {
 
     private void initTraining(View view) throws Exception {
 
-        int minutes_performance_int = checkText(minutes_performance);
-        int second_performance_int = checkText(seconds_performance);
-        int minutes_rest_int = checkText(minutes_rest);
-        int seconds_rest_int = checkText(seconds_rest);
-        int minutes_rest_exercise_int = checkText(minutes_rest_exercise);
-        int seconds_rest_exercise_int = checkText(seconds_rest_exercise);
+        int minutes_performance_int = checkTime(minutes_performance);
+        int second_performance_int = checkTime(seconds_performance);
+        int minutes_rest_int = checkTime(minutes_rest);
+        int seconds_rest_int = checkTime(seconds_rest);
+        int minutes_rest_exercise_int = checkTime(minutes_rest_exercise);
+        int seconds_rest_exercise_int = checkTime(seconds_rest_exercise);
         int value_circle_int = checkCircle(value_circle);
 
         Intent intentStartTraining = new Intent(this, Training.class);

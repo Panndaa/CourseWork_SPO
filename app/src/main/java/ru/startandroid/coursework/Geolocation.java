@@ -16,9 +16,6 @@ import android.widget.TextView;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.location.places.GeoDataClient;
-import com.google.android.gms.location.places.PlaceDetectionClient;
-import com.google.android.gms.location.places.Places;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
@@ -31,32 +28,24 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
-/**
- * An activity that displays a map showing the place at the device's current location.
- */
+
 public class Geolocation extends AppCompatActivity
         implements OnMapReadyCallback {
 
     private static final String TAG = Geolocation.class.getSimpleName();
     private GoogleMap mMap;
-    private CameraPosition mCameraPosition;
-    //
-//    // The entry points to the Places API.
-    private GeoDataClient mGeoDataClient;
-    private PlaceDetectionClient mPlaceDetectionClient;
-        public int seconds;
-    private boolean on_off_time, running;
-    private TextView time_run,running_speed,distance;
+    private int seconds;
+    private boolean on_off_time, running, readMyParameter;
+    private TextView time_run, running_speed, distance;
     private Button startRun;
-    private float mDistance,mSpeed;
-//    // The entry point to the Fused Location Provider.
+    private float mDistance, mSpeed;
+    //    // The entry point to the Fused Location Provider.
     private FusedLocationProviderClient mFusedLocationProviderClient;
     //
 //    // A default location (Sydney, Australia) and default zoom to use when location permission is
 //    // not granted.
-    private final LatLng mDefaultLocation = new LatLng(53.912167,27.594224);
+    private final LatLng mDefaultLocation = new LatLng(53.912167, 27.594224);
     private LatLng mLocationOnStart;
-Location location;
     private static final int DEFAULT_ZOOM = 15;
     private static final int PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1;
     private boolean mLocationPermissionGranted;
@@ -69,8 +58,6 @@ Location location;
     private static final String KEY_CAMERA_POSITION = "camera_position";
     private static final String KEY_LOCATION = "location";
 
-    MapFragment mapFragment;
-
 
     //
     @Override
@@ -80,54 +67,45 @@ Location location;
         // Retrieve location and camera position from saved instance state.
         if (savedInstanceState != null) {
             mLastKnownLocation = savedInstanceState.getParcelable(KEY_LOCATION);
-            mCameraPosition = savedInstanceState.getParcelable(KEY_CAMERA_POSITION);
+            CameraPosition mCameraPosition = savedInstanceState.getParcelable(KEY_CAMERA_POSITION);
         }
-//
-        // Retrieve the content view that renders the map.
+
         setContentView(R.layout.activity_geolocation);
-//
-//        // Construct a GeoDataClient.
-        mGeoDataClient = Places.getGeoDataClient(this, null);
-//
-//        // Construct a PlaceDetectionClient.
-        mPlaceDetectionClient = Places.getPlaceDetectionClient(this, null);
-//
+
 //        // Construct a FusedLocationProviderClient.
         mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 //
 //        // Build the map.
-//        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-//                .findFragmentById(R.id.map);
-//        mapFragment.getMapAsync(this);
-        mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.map);
+
+        MapFragment mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
         on_off_time = true;
         startRun = (Button) findViewById(R.id.startRun);
         running_speed = (TextView) findViewById(R.id.running_speed);
-        distance =(TextView) findViewById(R.id.distance);
+        distance = (TextView) findViewById(R.id.distance);
         startRun.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                runTimer();
                 if (on_off_time) {
-                    //getMySpeed(location);
-                    mLocationOnStart=new LatLng(mLastKnownLocation.getLatitude(),
+                    runTimer();
+                    readMyParameter = true;
+                    getMySpeed(mLastKnownLocation);
+                    getMyDistance(mLastKnownLocation);
+                    mLocationOnStart = new LatLng(mLastKnownLocation.getLatitude(),
                             mLastKnownLocation.getLongitude());
-//                    mMap.addMarker(new MarkerOptions()
-//                            .position(new LatLng(mLastKnownLocation.getLatitude(),
-//                                    mLastKnownLocation.getLongitude()))
-//                            .title("Начальная точка")
-//                            .icon(BitmapDescriptorFactory.fromResource(R.drawable.run)));
+                    mMap.addMarker(new MarkerOptions()
+                            .position(new LatLng(mLastKnownLocation.getLatitude(),
+                                    mLastKnownLocation.getLongitude()))
+                            .title("Начальная точка")
+                            .icon(BitmapDescriptorFactory.fromResource(R.drawable.run)));
 
-                    running=true;
-                    running_speed.setText("07:11");
-                    distance.setText("1,00");
+                    running = true;
                     startRun.setText("Завершить");
                     on_off_time = false;
                 } else {
-                    running=false;
+                    readMyParameter = false;
+                    running = false;
                     startRun.setText("Старт");
                     on_off_time = true;
                 }
@@ -298,34 +276,43 @@ Location location;
         }
     }
 
-       private void getMySpeed(Location location){
-           running_speed = (TextView) findViewById(R.id.running_speed);
-        mSpeed=0;
-        mSpeed+=location.getSpeed();
-        running_speed.setText(" "+mSpeed);
-       }
+    private void getMySpeed(Location location) {
+        if (readMyParameter) {
+            running_speed = (TextView) findViewById(R.id.running_speed);
+            mSpeed = location.getSpeed();
+            running_speed.setText(" " + mSpeed);
+        }
+        running_speed.setText(" " + mSpeed);
+    }
 
-//    private void getMyDistanceTo(Location location,LatLng save){
-//       mDistance=0;
-//       mDistance+=location.distanceTo(save);
-//
-//    }
-        private void runTimer() {
+    private void getMyDistance(Location location) {
+        if (readMyParameter) {
+            mDistance = location.distanceTo(location);
+            distance.setText("" + mDistance);
+        } else distance.setText("" + mDistance);
+    }
+
+    //    }
+    private void runTimer() {
         time_run = (TextView) findViewById(R.id.time_run);
         final Handler handler = new Handler();
-        handler.post(new Runnable() {
+        Thread te= new Thread(new Runnable() {
             @Override
             public void run() {
                 int minutes = (seconds % 3600) / 60;
                 int second = seconds % 60;
                 String time = String.format("%02d:%02d", minutes, second);
                 time_run.setText(time);
-                if(running){
+                if (running) {
                     seconds++;
                 }
-                handler.postDelayed(this,1000);
+                else {
+                  handler.removeCallbacks(this);
+                }
+                handler.postDelayed(this, 1000);
             }
         });
+        te.run();
     }
 }
 
